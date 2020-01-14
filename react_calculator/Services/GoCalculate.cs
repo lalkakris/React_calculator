@@ -1,4 +1,6 @@
-﻿using Calculator.Services;
+﻿using Calculator;
+using Calculator.Services;
+using react_calculator.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +15,6 @@ namespace react_calculator.Services
             var action = new MathOperations();
             action.Processing();
         }
-     
+
     }
 }
