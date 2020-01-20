@@ -26,7 +26,10 @@ export class FetchData extends Component {
                 {forecasts.map(forecast =>
                     <tr key={forecast.id}>
                         <td>{forecast.id}</td>
-                        <td>{forecast.example}</td>
+                        <label>
+                            Example:
+                            <input type="text" name="example" value={this.example} />
+                        </label>
                         <td>{forecast.solution}</td>
               <td>{forecast.result}</td>
               </tr>
