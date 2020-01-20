@@ -44,10 +44,15 @@ namespace react_calculator.Controllers
         [HttpGet]
         public IEnumerable<Expression> Get()
         {
-
-            var calc = new GoCalculate();
-            calc.Start();
             return GetDataFromDb();
         }
+
+        [HttpPost]
+        public void Calculate()
+        {
+          var calc = new GoCalculate();
+          calc.Start();
+        }
+        
     }
 }

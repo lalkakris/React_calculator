@@ -17,20 +17,19 @@ export class FetchData extends Component {
       <table className='table table-striped' aria-labelledby="tabelLabel">
         <thead>
           <tr>
-            <th>Date</th>
-            <th>Temp. (C)</th>
-            <th>Temp. (F)</th>
-            <th>Summary</th>
-          </tr>
+            <th>ID</th>
+            <th>Expression</th>
+            <th>Result</th>
+            </tr>
         </thead>
         <tbody>
-          {forecasts.map(forecast =>
-            <tr key={forecast.date}>
-              <td>{forecast.date}</td>
-              <td>{forecast.temperatureC}</td>
-              <td>{forecast.temperatureF}</td>
-              <td>{forecast.summary}</td>
-            </tr>
+                {forecasts.map(forecast =>
+                    <tr key={forecast.id}>
+                        <td>{forecast.id}</td>
+                        <td>{forecast.example}</td>
+                        <td>{forecast.solution}</td>
+              <td>{forecast.result}</td>
+              </tr>
           )}
         </tbody>
       </table>
@@ -44,7 +43,7 @@ export class FetchData extends Component {
 
     return (
       <div>
-        <h1 id="tabelLabel" >Weather forecast</h1>
+        <h1 id="tabelLabel" >Calculator</h1>
         <p>This component demonstrates fetching data from the server.</p>
         {contents}
       </div>
