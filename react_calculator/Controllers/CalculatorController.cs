@@ -42,16 +42,17 @@ namespace react_calculator.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<Expression> Get()
+        public IEnumerable<Expression> Get(int max)
         {
             return GetDataFromDb();
         }
 
         [HttpPost]
-        public void Calculate()
+        public ActionResult Calculate([FromBody]Expression Example)
         {
           var calc = new GoCalculate();
-          calc.Start();
+          calc.Start(Example);
+            return new JsonResult(GetDataFromDb().First(x => x.Example ==  Example.Example));
         }
         
     }

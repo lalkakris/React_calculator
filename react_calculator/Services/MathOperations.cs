@@ -16,7 +16,6 @@ namespace Calculator.Services
             {
                 var request = new Expression();
                 var toDo = new MathOperations();
-                request.Example = Console.ReadLine();
                 double[] numbers = request.Example.Split('+', '-', '*', '/', '^').Select(double.Parse).ToArray();
                 string[] operats = request.Example.Split(new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -38,7 +37,36 @@ namespace Calculator.Services
                         request.Solution = toDo.Pow(numbers);
                         break;
                 }
-                Console.WriteLine($"The answer is {request.Solution}!");
+                toDo.AddRequest(request);
+            }
+        }
+        public void Calc(Expression request)
+        {
+            using (var context = new HistoryContext())
+            {
+               
+                var toDo = new MathOperations();
+                double[] numbers = request.Example.Split('+', '-', '*', '/', '^').Select(double.Parse).ToArray();
+                string[] operats = request.Example.Split(new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9' }, StringSplitOptions.RemoveEmptyEntries);
+
+                switch (operats[0])
+                {
+                    case "+":
+                        request.Solution = toDo.Sum(numbers);
+                        break;
+                    case "-":
+                        request.Solution = toDo.Minus(numbers);
+                        break;
+                    case "*":
+                        request.Solution = toDo.Multiplication(numbers);
+                        break;
+                    case "/":
+                        request.Solution = toDo.Division(numbers);
+                        break;
+                    case "^":
+                        request.Solution = toDo.Pow(numbers);
+                        break;
+                }
                 toDo.AddRequest(request);
             }
         }
@@ -49,6 +77,7 @@ namespace Calculator.Services
             {
                 context.Expressions.Add(item);
                 context.SaveChanges();
+
             }
         }
 

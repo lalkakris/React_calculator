@@ -10,10 +10,10 @@ namespace react_calculator.Services
 {
     public class GoCalculate
     {
-        public void Start ()
+        public void Start (Expression Example)
         {
             var action = new MathOperations();
-            action.Processing();
+            action.Calc(Example);
         }
 
     }
